@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorBlobAPI", "BlazorBlobAPI\BlazorBlobAPI.csproj", "{05431CAE-1E85-494C-99B9-0D5FBF4FCC60}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05431CAE-1E85-494C-99B9-0D5FBF4FCC60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05431CAE-1E85-494C-99B9-0D5FBF4FCC60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05431CAE-1E85-494C-99B9-0D5FBF4FCC60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05431CAE-1E85-494C-99B9-0D5FBF4FCC60}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

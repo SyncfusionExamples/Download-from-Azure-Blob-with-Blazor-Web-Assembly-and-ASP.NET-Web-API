@@ -1,0 +1,50 @@
+﻿@page "/"
+@using BlazorBlobDemo.Models
+@using BlazorBlobDemo.Services
+
+@inject IFileService _fileService;
+@inject IJSRuntime JSRuntime;
+
+<h1>Comic SuperHeros</h1>
+
+@if (blobs == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    foreach (var blob in blobs)
+    {
+        <div style="border:1px solid gray; margin-bottom:10px; width: 202px;">
+            <SfCard >
+                <CardImage>
+                    <img src="@blob.FileUrl" alt="@blob.Name" @onclick="() => Download(blob.Name, blob.ContentType)" width="200" height="200"/>
+                </CardImage>
+                
+            </SfCard>
+        </div>
+        
+    }
+}
+@code {
+    private IJSObjectReference  _module;
+    private List<BlobDto> blobs;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        _module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./scripts/script.js");
+        blobs = await _fileService.GetFiles();
+    }
+    
+    private async Task Download(string name, string contentType)
+    {
+        var response = await _fileService.DownloadFile(name);
+        
+        await _module.InvokeVoidAsync("download", new 
+        { 
+            ByteArray = response.Content,
+            FileName = name,
+            ContentType = contentType
+        });
+    }
+}
